@@ -1,102 +1,46 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Starter</title>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Mixtape">
+<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" href="assets/icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Mixtape Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 
-    <!--
-      Every path in this project is relative: "css/app.css", never "/css/app.css".
-      A path that starts with "/" breaks as soon as the folder is uploaded.
-    -->
-    <link rel="stylesheet" href="css/tokens.css" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/frame.css" />
-    <link rel="stylesheet" href="css/app.css" />
-  </head>
-  <body>
-    <!-- Everything the visitor sees goes inside .phone -->
-    <div class="phone">
-      <!-- SCREEN: product -->
-      <section class="screen" data-screen="product" aria-labelledby="product-title">
-        <header class="screen-header">
-          <p class="screen-label">Demo: replace everything</p>
-          <button class="button" type="button" data-action="go-to" data-to="basket">
-            Basket (<span data-show="basket-total">0</span>)
-          </button>
-        </header>
-
-        <div class="screen-body">
-          <img
-            class="product-image"
-            src="assets/placeholder.svg"
-            alt="Grey placeholder where a product photo goes"
-            width="600"
-            height="600"
-          />
-          <h1 id="product-title" tabindex="-1">Plain mug</h1>
-          <p class="price">CHF 12</p>
-          <p class="note">
-            One product, one button, one basket that everyone shares. Reload the page:
-            the basket is still there.
-          </p>
-        </div>
-
-        <footer class="screen-footer">
-          <p class="notice" role="status" data-show="notice"></p>
-          <button class="button button-primary" type="button" data-action="add-to-basket">
-            Add to the shared basket
-          </button>
-        </footer>
-      </section>
-      <!-- /SCREEN: product -->
-
-      <!-- SCREEN: basket -->
-      <section class="screen" data-screen="basket" aria-labelledby="basket-title" hidden>
-        <header class="screen-header">
-          <button class="button" type="button" data-action="go-to" data-to="product">Back</button>
-          <p class="screen-label">Demo: replace everything</p>
-        </header>
-
-        <div class="screen-body">
-          <h1 id="basket-title" tabindex="-1">Shared basket</h1>
-          <p class="note">
-            Pretend every visitor fills this one basket. Nothing leaves this browser:
-            the other shoppers are simulated in <code>js/others.js</code>.
-          </p>
-          <dl>
-            <div class="summary-row">
-              <dt>Added by you</dt>
-              <dd data-show="basket-yours">0</dd>
-            </div>
-            <div class="summary-row">
-              <dt>Added by others</dt>
-              <dd data-show="basket-others">0</dd>
-            </div>
-            <div class="summary-row">
-              <dt>In the basket</dt>
-              <dd data-show="basket-summary">0</dd>
-            </div>
-          </dl>
-        </div>
-
-        <footer class="screen-footer">
-          <button class="button button-primary" type="button" data-action="empty-basket">
-            Empty the basket for everyone
-          </button>
-        </footer>
-      </section>
-      <!-- /SCREEN: basket -->
-    </div>
-
-    <!-- The order matters: each file uses the ones above it. app.js is always last. -->
-    <script src="js/frame.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/storage.js"></script>
-    <script src="js/state.js"></script>
-    <script src="js/shared.js"></script>
-    <script src="js/others.js"></script>
-    <script src="js/render.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+</head>
+<body>
+<div id="app">
+  <div id="ledbg"></div><canvas id="led"></canvas>
+  <div id="cat"><div id="cathead"><div class="shop">shop <svg viewBox="0 0 15 8"><path d="M1 1l6.5 6L14 1" fill="none" stroke="#000" stroke-width="1"/></svg></div><div class="all">all products</div></div><div id="cards"></div></div>
+  <div class="page" id="pp"><div class="h1">try it.<br>feel it.</div><img id="ppimg" alt=""><div class="pname sm" id="ppname"></div>
+    <div class="keys"><button class="key" id="ppBack" aria-label="back"><svg width="14" height="22" viewBox="0 0 14 22"><path d="M11.9793 0C12.381 0 12.7934 0.145631 13.1 0.427185C13.7238 1 13.7238 1.92233 13.1 2.48544L3.82744 11L13.1 19.5146C13.7238 20.0874 13.7238 21.0097 13.1 21.5728C12.4762 22.1359 11.4718 22.1456 10.8585 21.5728L0.465214 12.0291C0.169169 11.7573 0 11.3884 0 11C0 10.6117 0.169169 10.2427 0.465214 9.97087L10.8585 0.427185C11.1651 0.145631 11.5775 0 11.9793 0Z" fill="#000"/></svg></button></div></div>
+  <div class="page" id="obp"><div id="stage"></div><div class="h1">try it.<br>feel it.</div><div class="pname sm">OB – 4<br>549CHFS</div>
+    <div class="keys"><div class="kl"><button class="key" id="obBack" aria-label="back"><svg width="14" height="22" viewBox="0 0 14 22"><path d="M11.9793 0C12.381 0 12.7934 0.145631 13.1 0.427185C13.7238 1 13.7238 1.92233 13.1 2.48544L3.82744 11L13.1 19.5146C13.7238 20.0874 13.7238 21.0097 13.1 21.5728C12.4762 22.1359 11.4718 22.1456 10.8585 21.5728L0.465214 12.0291C0.169169 11.7573 0 11.3884 0 11C0 10.6117 0.169169 10.2427 0.465214 9.97087L10.8585 0.427185C11.1651 0.145631 11.5775 0 11.9793 0Z" fill="#000"/></svg></button><button class="key mute" id="bMute" aria-label="mute"><svg class="on" width="25" height="20" viewBox="0 0 25 20"><path d="M14.8761 19.989C14.7136 19.989 14.5511 19.939 14.4136 19.8516L7.62556 15.4419H5.07537C2.27517 15.4419 0 12.9935 0 9.99546C0 6.99741 2.26267 4.549 5.06287 4.549H7.61306L14.4136 0.139362C14.6761 -0.0355241 15.0261 -0.048016 15.3011 0.114379C15.5761 0.276773 15.7512 0.576578 15.7512 0.913859V19.0896C15.7512 19.4143 15.5761 19.7266 15.3011 19.889C15.1636 19.964 15.0261 20.0015 14.8761 20.0015V19.989ZM21.6266 17.4406C21.4141 17.4406 21.1891 17.3532 21.0265 17.1908C20.6765 16.841 20.664 16.2664 21.0015 15.9041C24.0018 12.6562 24.0018 7.37217 21.0015 4.13677C20.664 3.7745 20.6765 3.19988 21.0265 2.8501C21.3766 2.50033 21.9266 2.51282 22.2641 2.87509C25.9144 6.81003 25.9144 13.2309 22.2641 17.1658C22.0891 17.3532 21.8641 17.4406 21.6391 17.4406H21.6266ZM18.9514 14.53C18.7389 14.53 18.5139 14.4426 18.3513 14.2802C18.0013 13.9304 17.9888 13.3558 18.3263 12.9935C19.8515 11.3446 19.8515 8.67132 18.3263 7.02239C17.9888 6.66013 18.0013 6.0855 18.3513 5.73573C18.7014 5.38596 19.2514 5.39845 19.5889 5.76071C21.7516 8.09669 21.7516 11.9192 19.5889 14.2552C19.4139 14.4426 19.1889 14.53 18.9639 14.53H18.9514Z" fill="#1D1B20"/></svg><svg class="off" width="25" height="22" viewBox="0 0 25 22"><path d="M0.587233 0.268599C0.941843 -0.0954808 1.52895 -0.0835354 1.88344 0.268599L8.15562 6.5372L9.19521 7.58156L14.1222 12.5134L15.4065 13.7893L17.8402 16.2194H17.8271L21.8136 20.2035C22.1804 20.5558 22.1681 21.1391 21.8136 21.4914C21.6302 21.6735 21.3977 21.7587 21.1655 21.7587C20.9332 21.7587 20.7007 21.6735 20.5174 21.4914L15.4065 16.3769V21.1142C15.4065 21.4422 15.2351 21.7345 14.9661 21.8924C14.8318 21.9651 14.6973 22.001 14.5507 22.001C14.3918 22.001 14.2329 21.9524 14.0984 21.8673L7.45858 17.58H4.96403C2.22523 17.5799 0 15.2105 0 12.283C7.60268e-05 9.35554 2.22528 6.98732 4.96403 6.98717H6.01556L0.587233 1.55645C0.220462 1.20416 0.232656 0.620872 0.587233 0.268599Z" fill="#1D1B20"/><path d="M20.5663 5.32215C20.9086 4.98214 21.4465 4.99501 21.7766 5.34721C25.2123 9.04015 25.3232 14.9562 22.1442 18.807L20.8969 17.555C23.4399 14.3844 23.3424 9.58554 20.5424 6.573C20.2124 6.22071 20.224 5.66225 20.5663 5.32215Z" fill="#1D1B20"/><path d="M17.95 8.14015C18.2924 7.80045 18.8303 7.81312 19.1603 8.16522C21.1654 10.3397 21.2387 13.7898 19.4169 16.0857L18.1947 14.8587C19.3929 13.2431 19.3188 10.8864 17.9249 9.3922C17.5949 9.03991 17.6077 8.48026 17.95 8.14015Z" fill="#1D1B20"/><path d="M14.1103 2.69869C14.3791 2.52877 14.7091 2.51607 14.978 2.67363C15.247 2.83154 15.4184 3.13602 15.4185 3.45183V12.0646L13.7069 10.3638H13.7188L10.4783 7.11965L9.20715 5.85686L14.1103 2.69869Z" fill="#1D1B20"/></svg></button></div><button class="key wide like" id="bSave">like it ?</button></div>
+    <button class="key zoomout" aria-label="zoom out"><svg width="14" height="22" viewBox="0 0 14 22"><path d="M11.9793 0C12.381 0 12.7934 0.145631 13.1 0.427185C13.7238 1 13.7238 1.92233 13.1 2.48544L3.82744 11L13.1 19.5146C13.7238 20.0874 13.7238 21.0097 13.1 21.5728C12.4762 22.1359 11.4718 22.1456 10.8585 21.5728L0.465214 12.0291C0.169169 11.7573 0 11.3884 0 11C0 10.6117 0.169169 10.2427 0.465214 9.97087L10.8585 0.427185C11.1651 0.145631 11.5775 0 11.9793 0Z" fill="#000"/></svg></button></div>
+  <div class="page" id="epp"><div id="stage3"></div><div class="h1">try it.<br>feel it.</div><div class="pname sm">EP – 133<br>299CHFS</div>
+    <div class="keys"><div class="kl"><button class="key" id="epBack" aria-label="back"><svg width="14" height="22" viewBox="0 0 14 22"><path d="M11.9793 0C12.381 0 12.7934 0.145631 13.1 0.427185C13.7238 1 13.7238 1.92233 13.1 2.48544L3.82744 11L13.1 19.5146C13.7238 20.0874 13.7238 21.0097 13.1 21.5728C12.4762 22.1359 11.4718 22.1456 10.8585 21.5728L0.465214 12.0291C0.169169 11.7573 0 11.3884 0 11C0 10.6117 0.169169 10.2427 0.465214 9.97087L10.8585 0.427185C11.1651 0.145631 11.5775 0 11.9793 0Z" fill="#000"/></svg></button><button class="key mute" id="eMute" aria-label="mute"><svg class="on" width="25" height="20" viewBox="0 0 25 20"><path d="M14.8761 19.989C14.7136 19.989 14.5511 19.939 14.4136 19.8516L7.62556 15.4419H5.07537C2.27517 15.4419 0 12.9935 0 9.99546C0 6.99741 2.26267 4.549 5.06287 4.549H7.61306L14.4136 0.139362C14.6761 -0.0355241 15.0261 -0.048016 15.3011 0.114379C15.5761 0.276773 15.7512 0.576578 15.7512 0.913859V19.0896C15.7512 19.4143 15.5761 19.7266 15.3011 19.889C15.1636 19.964 15.0261 20.0015 14.8761 20.0015V19.989ZM21.6266 17.4406C21.4141 17.4406 21.1891 17.3532 21.0265 17.1908C20.6765 16.841 20.664 16.2664 21.0015 15.9041C24.0018 12.6562 24.0018 7.37217 21.0015 4.13677C20.664 3.7745 20.6765 3.19988 21.0265 2.8501C21.3766 2.50033 21.9266 2.51282 22.2641 2.87509C25.9144 6.81003 25.9144 13.2309 22.2641 17.1658C22.0891 17.3532 21.8641 17.4406 21.6391 17.4406H21.6266ZM18.9514 14.53C18.7389 14.53 18.5139 14.4426 18.3513 14.2802C18.0013 13.9304 17.9888 13.3558 18.3263 12.9935C19.8515 11.3446 19.8515 8.67132 18.3263 7.02239C17.9888 6.66013 18.0013 6.0855 18.3513 5.73573C18.7014 5.38596 19.2514 5.39845 19.5889 5.76071C21.7516 8.09669 21.7516 11.9192 19.5889 14.2552C19.4139 14.4426 19.1889 14.53 18.9639 14.53H18.9514Z" fill="#1D1B20"/></svg><svg class="off" width="25" height="22" viewBox="0 0 25 22"><path d="M0.587233 0.268599C0.941843 -0.0954808 1.52895 -0.0835354 1.88344 0.268599L8.15562 6.5372L9.19521 7.58156L14.1222 12.5134L15.4065 13.7893L17.8402 16.2194H17.8271L21.8136 20.2035C22.1804 20.5558 22.1681 21.1391 21.8136 21.4914C21.6302 21.6735 21.3977 21.7587 21.1655 21.7587C20.9332 21.7587 20.7007 21.6735 20.5174 21.4914L15.4065 16.3769V21.1142C15.4065 21.4422 15.2351 21.7345 14.9661 21.8924C14.8318 21.9651 14.6973 22.001 14.5507 22.001C14.3918 22.001 14.2329 21.9524 14.0984 21.8673L7.45858 17.58H4.96403C2.22523 17.5799 0 15.2105 0 12.283C7.60268e-05 9.35554 2.22528 6.98732 4.96403 6.98717H6.01556L0.587233 1.55645C0.220462 1.20416 0.232656 0.620872 0.587233 0.268599Z" fill="#1D1B20"/><path d="M20.5663 5.32215C20.9086 4.98214 21.4465 4.99501 21.7766 5.34721C25.2123 9.04015 25.3232 14.9562 22.1442 18.807L20.8969 17.555C23.4399 14.3844 23.3424 9.58554 20.5424 6.573C20.2124 6.22071 20.224 5.66225 20.5663 5.32215Z" fill="#1D1B20"/><path d="M17.95 8.14015C18.2924 7.80045 18.8303 7.81312 19.1603 8.16522C21.1654 10.3397 21.2387 13.7898 19.4169 16.0857L18.1947 14.8587C19.3929 13.2431 19.3188 10.8864 17.9249 9.3922C17.5949 9.03991 17.6077 8.48026 17.95 8.14015Z" fill="#1D1B20"/><path d="M14.1103 2.69869C14.3791 2.52877 14.7091 2.51607 14.978 2.67363C15.247 2.83154 15.4184 3.13602 15.4185 3.45183V12.0646L13.7069 10.3638H13.7188L10.4783 7.11965L9.20715 5.85686L14.1103 2.69869Z" fill="#1D1B20"/></svg></button></div><button class="key wide like" id="eSave">like it ?</button></div>
+    <button class="key zoomout" aria-label="zoom out"><svg width="14" height="22" viewBox="0 0 14 22"><path d="M11.9793 0C12.381 0 12.7934 0.145631 13.1 0.427185C13.7238 1 13.7238 1.92233 13.1 2.48544L3.82744 11L13.1 19.5146C13.7238 20.0874 13.7238 21.0097 13.1 21.5728C12.4762 22.1359 11.4718 22.1456 10.8585 21.5728L0.465214 12.0291C0.169169 11.7573 0 11.3884 0 11C0 10.6117 0.169169 10.2427 0.465214 9.97087L10.8585 0.427185C11.1651 0.145631 11.5775 0 11.9793 0Z" fill="#000"/></svg></button></div>
+  <div class="page" id="fin"><div class="h1">Finalizing your mixtape<span class="d"><i>.</i><i>.</i><i>.</i></span></div></div>
+  <div class="page" id="end"><div class="scroll"><div class="toprow"><div class="h1">hear it.</div><div class="h1" id="devused">OB–4 used</div></div>
+    <div id="discw"><div id="disc"><div id="discbtn"><svg class="pl" width="16" height="21" viewBox="0 0 16 21"><path d="M15.6089 9.75356L1.38667 0.151476C1.11408 -0.0285634 0.75852 -0.0525686 0.474076 0.103465C0.189631 0.259499 0 0.559564 0 0.895637V20.0998C0 20.4359 0.17778 20.7359 0.474076 20.892C0.604446 20.964 0.746667 21 0.888889 21C1.06667 21 1.23259 20.952 1.38667 20.844L15.6089 11.2419C15.8578 11.0738 16 10.7978 16 10.4977C16 10.1977 15.8459 9.90959 15.6089 9.75356Z" fill="#1D1B20"/></svg><svg class="pa" width="18" height="22" viewBox="0 0 18 22"><path d="M5.5 0C5.5 0 7 0 7 1.5V20.5C7 20.5 7 22 5.5 22H1.5C1.5 22 0 22 0 20.5V1.5C0 1.5 0 0 1.5 0H5.5Z" fill="#1D1B20"/><path d="M16.5 0C16.5 0 18 0 18 1.5V20.5C18 20.5 18 22 16.5 22H12.5C12.5 22 11 22 11 20.5V1.5C11 1.5 11 0 12.5 0H16.5Z" fill="#1D1B20"/></svg></div></div></div>
+    <div class="h1" id="tested">tested by you.<br>suggested by us.</div><div id="tcards"></div></div>
+    <div class="keys"><button class="key" id="endBack" aria-label="back"><svg width="14" height="22" viewBox="0 0 14 22"><path d="M11.9793 0C12.381 0 12.7934 0.145631 13.1 0.427185C13.7238 1 13.7238 1.92233 13.1 2.48544L3.82744 11L13.1 19.5146C13.7238 20.0874 13.7238 21.0097 13.1 21.5728C12.4762 22.1359 11.4718 22.1456 10.8585 21.5728L0.465214 12.0291C0.169169 11.7573 0 11.3884 0 11C0 10.6117 0.169169 10.2427 0.465214 9.97087L10.8585 0.427185C11.1651 0.145631 11.5775 0 11.9793 0Z" fill="#000"/></svg></button><button class="key wide" id="buy">buy it.</button></div></div>
+  <div class="page" id="get"><div class="scroll"><div id="grows"></div></div>
+    <div class="gtop"><button class="key" id="getBack" aria-label="back"><svg width="14" height="22" viewBox="0 0 14 22"><path d="M11.9793 0C12.381 0 12.7934 0.145631 13.1 0.427185C13.7238 1 13.7238 1.92233 13.1 2.48544L3.82744 11L13.1 19.5146C13.7238 20.0874 13.7238 21.0097 13.1 21.5728C12.4762 22.1359 11.4718 22.1456 10.8585 21.5728L0.465214 12.0291C0.169169 11.7573 0 11.3884 0 11C0 10.6117 0.169169 10.2427 0.465214 9.97087L10.8585 0.427185C11.1651 0.145631 11.5775 0 11.9793 0Z" fill="#000"/></svg></button></div>
+    <div class="keys"><span></span><button class="key co" id="checkout"><span>check out</span><small id="gtotal"></small></button></div></div>
+  <div id="land"><div class="h1">record it.</div><button id="bigrec" aria-label="tap to record"></button></div>
+  <div id="toast"></div>
+  <input type="file" accept="audio/*" hidden id="upload">
+</div>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<script type="module" src="js/00-boot.js"></script>
+</body>
 </html>
