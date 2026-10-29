@@ -93,6 +93,10 @@ button,label{font:inherit;color:inherit;background:none;border:0;padding:0;curso
 .gr .q span{font-size:14px;min-width:10px;text-align:center}
 .key.co{width:auto;min-width:150px;justify-content:space-between;align-items:baseline;padding:8px 14px 0;height:41px;gap:26px}
 .key.co span{font-size:26.24px;line-height:24px;text-align:left;white-space:nowrap}.key.co small{font-size:14px;line-height:24px}
+/* thank you: after check out */
+#thx .brand{position:absolute;left:0;right:0;bottom:calc(26px + env(safe-area-inset-bottom));display:flex;justify-content:center;align-items:flex-end;gap:10px;padding-left:16px}
+#thx .brand img{width:138px;height:auto;display:block}
+#thx .brand .sm{transform:translateY(3px)}
 /* toast */
 #toast{position:absolute;left:0;right:0;bottom:64px;text-align:center;font-size:14px;line-height:16px;z-index:9;opacity:0;transition:opacity .25s;pointer-events:none}
 #toast.show{opacity:1}

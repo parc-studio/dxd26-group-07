@@ -18,9 +18,9 @@ let toastT=0;function ledMsg(t,ms=1800){const el=$('#toast');el.textContent=t.to
 /* ====================== pages ====================== */
 let page='land';
 const MACH=p=>p==='obp'?'ob':p==='epp'?'ep':null;let lastMachine='ob';
-function show(p){if(MACH(page)&&p!==page){if(mixRec)stopRec();if(mixPlaying)mixPause()}page=p;['pp','obp','epp','fin','end','get'].forEach(id=>$('#'+id).classList.toggle('show',id===p));
+function show(p){if(MACH(page)&&p!==page){if(mixRec)stopRec();if(mixPlaying)mixPause()}page=p;['pp','obp','epp','fin','end','get','thx'].forEach(id=>$('#'+id).classList.toggle('show',id===p));
   if(MACH(p))lastMachine=MACH(p);
-  app.classList.toggle('inpage',p!=='cat'&&p!=='land');app.classList.toggle('incat',p==='cat');app.classList.toggle('incart',p==='end'||p==='get');
+  app.classList.toggle('inpage',p!=='cat'&&p!=='land');app.classList.toggle('incat',p==='cat');app.classList.toggle('incart',p==='end'||p==='get'||p==='thx');
   app.classList.remove('zoomed');
   if(p!=='obp'&&volG)setG(volG,0,.15);
   if(p!=='epp'&&epVol){setG(epVol,0,.15);loopStop();clkStop();if(punchPad!==null)punch(punchPad,false)}
@@ -33,7 +33,7 @@ $('#epBack').addEventListener('click',()=>show('cat'));
 $('#endBack').addEventListener('click',()=>lastMachine==='ep'?openEP():openOB());
 $('#buy').addEventListener('click',()=>{if(!activeMach().length){ledMsg('nothing left on your tape',1600);return}openGet()});
 $('#getBack').addEventListener('click',()=>{show('end');discNode.port.postMessage({t:'speed',v:discPlaying?1:0})});
-$('#checkout').addEventListener('click',()=>ledMsg('thank you — this is a prototype',2600));
+$('#checkout').addEventListener('click',()=>{if(!activeMach().some(m=>cartQty[m]>0)){ledMsg('your cart is empty',1600);return}show('thx')});
 
 /* ====================== landing: tap to record your sound, tap to stop ====================== */
 let stream=null,mr=null,chunks=[],an=null,anSrc=null,recTimer=null,started=false,micFails=0;
